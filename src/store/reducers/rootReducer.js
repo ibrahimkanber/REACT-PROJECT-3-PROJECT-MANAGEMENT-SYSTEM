@@ -1,12 +1,13 @@
 import {combineReducers} from 'redux';
-import projectreducer from "./projectReducer";
-import authtreducer from "./authReducer";
-import {firestoreReducer} from "redux-firestore"
+import projectReducer from "./projectReducer";
+import authReducer from "./authReducer";
+import {firestoreReducer} from "redux-firestore";
+import {firebaseReducer} from "react-redux-firebase"
 
-
+// console.log(firestoreReducer)
 
 const rootReducer=combineReducers({
-    authtreducer,projectreducer,firestoreReducer
+    authReducer,projectReducer,firestoreReducer,firebaseReducer
 })
 
 export default rootReducer;

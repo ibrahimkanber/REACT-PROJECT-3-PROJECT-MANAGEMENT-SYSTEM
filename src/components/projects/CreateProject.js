@@ -4,7 +4,8 @@ import {createProject} from "../../store/actions/ProjectActions";
 import {useDispatch,useSelector} from "react-redux";
 import { createStore } from 'redux';
 
-const CreateProject = () => {
+const CreateProject = (props) => {
+    console.log(props)
     const  dispatch=useDispatch()
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");

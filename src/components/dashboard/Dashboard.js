@@ -4,7 +4,7 @@ import ProjectList from '../projects/ProjectList';
 import Notifications from './Notifications';
 import {useFirestoreConnect} from "react-redux-firebase";
 
-console.log(useFirestoreConnect)
+// console.log(useFirestoreConnect)
 
 function Dashboard() {
     const [list,setList]=useState([])

@@ -4,6 +4,7 @@ import { useFirestoreConnect } from "react-redux-firebase";
 
 
 function ProjectDetails(props) {
+    console.log(props)
     const id = props.match.params.id
     const projectObj = useSelector(state => {
         return (

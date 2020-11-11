@@ -1,7 +1,7 @@
 import React from 'react'
 
 function ProjectSummary({ project }) {
-    console.log(project)
+
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     return (
         <div className="card z-depth-0 project-summary">

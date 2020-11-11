@@ -1,15 +1,28 @@
 import React,{useState} from 'react'
+import {useDispatch,useSelector} from "react-redux";
 
-function SıgnIn() {
+import {signIn} from "../../store/actions/authActions"
+
+console.log(signIn)
+
+function SıgnIn(props) {
     const [email,setEmail]=useState("")
     const [password,setPassword]=useState("")
 
+    const dispatch=useDispatch()
+    
     function handleChange(e){
-        setEmail(e.target.id)
+        switch(e.target.id){
+            case "email":
+                setEmail(e.target.value)
+            case "password":
+                setPassword(e.target.value)
+        }
     }
 
     function handleSubmit(e){
         e.preventDefault()
+        dispatch(signIn(email,password))
     }
 
    
