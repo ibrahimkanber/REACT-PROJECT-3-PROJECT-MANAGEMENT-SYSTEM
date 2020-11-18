@@ -36,5 +36,17 @@ export const editProject=(title,content,projectId)=>{
         
     }
 }
+export const deleteProject=(projectId)=>{
+    return (dispatch,getState,{getFirebase,getFirestore})=>{
 
-// dispatch({type:"CREATE_PROJECT",payload: project})
+        const firestore=getFirestore()
+        
+        firestore.collection("projects").doc(projectId).delete().then(()=>{
+            dispatch({type:"DELETE_PROJECT"})
+        }).catch((err)=>{
+            dispatch({type:"DELETE_PROJECT_ERROR",payload:err})
+        })
+        
+    }
+}
+

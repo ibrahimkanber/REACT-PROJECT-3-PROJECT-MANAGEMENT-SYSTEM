@@ -15,10 +15,15 @@ const projectReducer=(state=initialState.projects,action)=>{
         case "CREATE_PROJECT_ERROR":
             console.log(action.err)
             return state;
-            
+         
+        case "EDIT_PROJECT":
+            console.log("edited")
+            return state
         case "EDIT_PROJECT_ERROR":
             console.log("edit error:"+action.payload)
             return state
+        case "DELETE_PROJECT":
+                console.log("deleted")
     }
     return state
 }

@@ -1,9 +1,11 @@
 import React from 'react'
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import moment from 'moment';
+import { deleteProject } from '../../store/actions/ProjectActions';
 
 function ProjectDetails(props) {
+    const dispatch=useDispatch()
     /* console.log(props) */
     const id = props.match.params.id
     const projectObj = useSelector(state => {
@@ -12,14 +14,18 @@ function ProjectDetails(props) {
         )
     })
 
+    /* console.log(projectObj) */
 
-
+    const deletehandler=()=>{
+        dispatch(deleteProject(id))
+        props.history.push("/")
+    }
 
     const { auth } = useSelector(state => state.firebaseReducer)
     if (!auth.uid) return (<Redirect to="/signIn" />)
 
 
-    if (Object.keys(projectObj).length) {
+    if (Object.keys(projectObj).length && projectObj.projects[id]) {
         const project = projectObj.projects[id]
 
         return (
@@ -42,6 +48,7 @@ function ProjectDetails(props) {
                             }}>
                             <button className="btn lighten-1 z-deph-0">Create</button>
                             </Link>
+                            <button className="btn lighten-1 z-deph-0" onClick={deletehandler}>Delete</button>
                         </div>
                     </div>
                 </div>
