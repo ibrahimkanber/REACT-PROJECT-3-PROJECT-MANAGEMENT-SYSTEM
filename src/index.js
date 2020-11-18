@@ -10,6 +10,8 @@ import rootReducer from "./store/reducers/rootReducer";
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
 
+import { useSelector } from "react-redux";
+
 
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
@@ -18,7 +20,7 @@ import {
   getFirestore,
   createFirestoreInstance
 } from "redux-firestore";
-import { ReactReduxFirebaseProvider, getFirebase } from "react-redux-firebase";
+import { ReactReduxFirebaseProvider, getFirebase, isLoaded } from "react-redux-firebase";
 import fbConfig from "./firebase/config";
 import firebase from "firebase/app";
 
@@ -36,16 +38,28 @@ const rrfProps = {
   firebase,
   config: fbConfig,
   dispatch: store.dispatch,
-  createFirestoreInstance
+  createFirestoreInstance,
+  presence: 'presence', // where list of online users is stored in database
+  sessions: 'sessions',
+  userProfile: 'users', // where profiles are stored in database,
+  useFirestoreForProfile: true
 };
 
+
+function AuthIsLoaded({ children }) {
+  const auth = useSelector(state => state.firebaseReducer.auth)
+  if (!isLoaded(auth)) return <div>Loading Screen...</div>;
+  return children
+}
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
         <ReactReduxFirebaseProvider {...rrfProps}>
-          <App />
+          <AuthIsLoaded>
+            <App />
+          </AuthIsLoaded>
         </ReactReduxFirebaseProvider>
       </Provider>
     </BrowserRouter>

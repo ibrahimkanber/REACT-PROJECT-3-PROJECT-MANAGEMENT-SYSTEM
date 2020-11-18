@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
-
+import {Redirect} from "react-router-dom";
 import { signIn } from "../../store/actions/authActions"
 
 // console.log(signIn)
@@ -26,6 +26,9 @@ function SıgnIn(props) {
         e.preventDefault()
         dispatch(signIn(email, password))
     }
+
+    const {auth} = useSelector(state => state.firebaseReducer)
+    if(auth.uid) return(<Redirect to="/"/>)
 
 
     return (

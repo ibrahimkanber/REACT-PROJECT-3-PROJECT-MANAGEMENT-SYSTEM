@@ -10,7 +10,7 @@ var firebaseConfig = {
     projectId: "mein-plan-2271",
     storageBucket: "mein-plan-2271.appspot.com",
     messagingSenderId: "883915123311",
-    appId: "1:883915123311:web:4b5c1a54ef9efb3206fb9a"
+    appId: "1:883915123311:web:4b5c1a54ef9efb3206fb9a",
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);

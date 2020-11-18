@@ -1,14 +1,16 @@
-import React from 'react'
+import React from 'react';
+import moment from 'moment';
+
 
 function ProjectSummary({ project }) {
+    /* console.log(moment(project.createdAt.toDate()).calendar()) */
 
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     return (
         <div className="card z-depth-0 project-summary">
             <div className="card-content grey-text text-darken-3">
                 <span className="card-title">{project.title}</span>
-                <p>Posted by Ibrahim</p>
-                <div className="grey-text">{new Date(project.createdAt).toLocaleDateString('de-DE', options)}</div>
+                <p>Posted by {project.authorFirstName.toUpperCase()}</p>
+                <div className="grey-text">{moment(project.createdAt.toDate()).calendar() }</div>
             </div>
         </div>
     )

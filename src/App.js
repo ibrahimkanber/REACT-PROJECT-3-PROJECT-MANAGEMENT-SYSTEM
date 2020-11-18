@@ -5,6 +5,7 @@ import SignUp from './components/auth/SıgnUp'
 import Dashboard from './components/dashboard/Dashboard'
 import Navbar from './components/layout/Navbar'
 import CreateProject from './components/projects/CreateProject'
+import EditProject from './components/projects/EditProject'
 import ProjectDetails from './components/projects/ProjectDetails'
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route  exact path="/signIn" component={SıgnIn}/>
         <Route  exact path="/signUp" component={SignUp}/>
         <Route  exact path="/newProject" component={CreateProject}/>
+        <Route  exact path="/edit/:id" component={EditProject}/>
       </Switch>
     </div>
   )

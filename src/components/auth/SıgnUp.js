@@ -1,5 +1,7 @@
 import React,{useState} from 'react';
-
+import {useSelector ,useDispatch} from "react-redux";
+import {Redirect} from "react-router-dom";
+import {signUp} from "../../store/actions/authActions"
 function SignUp() {
     const [firstName,setFirstName]=useState("");
     const [lastName,setLastName]=useState("");
@@ -23,12 +25,17 @@ function SignUp() {
         }
     }
 
-    console.log(firstName,lastName,password,email)
+/*     console.log(firstName,lastName,password,email) */
+    const dispatch=useDispatch()
     
     function handleSubmit(e){
-        e.preventDefault()
+        e.preventDefault();
+        dispatch(signUp(email,password,firstName,lastName))
+
     }
 
+    const {auth} = useSelector(state => state.firebaseReducer)
+    if(auth.uid) return(<Redirect to="/"/>)
    
     return (
      <div className="container">

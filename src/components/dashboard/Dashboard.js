@@ -1,19 +1,21 @@
 import React,{useState} from 'react';
-import {useDispatch,useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import ProjectList from '../projects/ProjectList';
 import Notifications from './Notifications';
 import {useFirestoreConnect} from "react-redux-firebase";
-
+import {Redirect} from "react-router-dom";
+ 
 // console.log(useFirestoreConnect)
 
 function Dashboard() {
-    const [list,setList]=useState([])
+    
     useFirestoreConnect([
-        {collection:"projects"}
+        {collection:"projects",orderBy:["createdAt","desc"]}
     ])
 
-    const projects=useSelector(state=>state.firestoreReducer.ordered.projects)
-
+    const {projects}=useSelector(state=>state.firestoreReducer.ordered)
+    const {auth} = useSelector(state => state.firebaseReducer)
+    if(!auth.uid) return(<Redirect to="/signIn"/>)
     return (
         <div className="dashboard container">
             <div className="row">

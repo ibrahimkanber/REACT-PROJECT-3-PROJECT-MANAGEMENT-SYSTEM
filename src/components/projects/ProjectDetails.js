@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from "react-redux";
-import { useFirestoreConnect } from "react-redux-firebase";
-
+import React from 'react'
+import { useSelector } from "react-redux";
+import { Link, Redirect } from "react-router-dom";
+import moment from 'moment';
 
 function ProjectDetails(props) {
-    console.log(props)
+    /* console.log(props) */
     const id = props.match.params.id
     const projectObj = useSelector(state => {
         return (
@@ -13,17 +13,15 @@ function ProjectDetails(props) {
     })
 
 
-    // console.log(Object.keys(project).length)
 
-    useFirestoreConnect([
-        { collection: "projects" }
-    ]
-    )
+
+    const { auth } = useSelector(state => state.firebaseReducer)
+    if (!auth.uid) return (<Redirect to="/signIn" />)
 
 
     if (Object.keys(projectObj).length) {
         const project = projectObj.projects[id]
-      
+
         return (
             <div>
                 <div className="container section project-details">
@@ -33,10 +31,17 @@ function ProjectDetails(props) {
                             <p>{project.content}</p>
                         </div>
                         <div className="card-action grey lighten-4 grey-text">
-                            <div>Posted By {project.authorFirstName} {project.authorLastName} </div>
-                            <div>{
-                            
-                            new Date(project.createdAt).toLocaleString('en-Gb')}</div>
+                            <div>Posted By {project.authorFirstName.toUpperCase()} {project.authorLastName.toUpperCase()} </div>
+                            <div className="grey-text">{moment(project.createdAt.toDate()).calendar()}</div>
+                        </div>
+                        <div className="input-field">
+                            <Link to={{
+                                pathname:`/edit/${id}`,
+                                state:{...project}
+
+                            }}>
+                            <button className="btn lighten-1 z-deph-0">Create</button>
+                            </Link>
                         </div>
                     </div>
                 </div>
