@@ -48,7 +48,7 @@ const rrfProps = {
 
 function AuthIsLoaded({ children }) {
   const auth = useSelector(state => state.firebaseReducer.auth)
-  if (!isLoaded(auth)) return <div>Loading Screen...</div>;
+  /* if (!isLoaded(auth)) return <div>Loading Screen...</div>; */
   return children
 }
 

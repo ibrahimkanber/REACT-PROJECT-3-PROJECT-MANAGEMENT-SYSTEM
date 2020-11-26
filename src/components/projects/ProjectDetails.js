@@ -3,18 +3,24 @@ import { useSelector,useDispatch } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import moment from 'moment';
 import { deleteProject } from '../../store/actions/ProjectActions';
+import { 
+    StyledProjectDetailsWrapper,
+    StyledProjectDetailsContentWrapper,
+     StyledProjectDetailsSmallWrapper ,
+     StyledProjectDetailsFooterLeft,
+     StyledProjectDetailsFooterRight
+     ,StyledProjectDetailsFooterButton,StyledProjectDetailsTitle,
+     StyledProjectDetailsFooterContainer} from './styles/ProjectDetails.style';
 
 function ProjectDetails(props) {
     const dispatch=useDispatch()
-    /* console.log(props) */
+   
     const id = props.match.params.id
     const projectObj = useSelector(state => {
         return (
             state.firestoreReducer.data
         )
     })
-
-    /* console.log(projectObj) */
 
     const deletehandler=()=>{
         dispatch(deleteProject(id))
@@ -29,34 +35,34 @@ function ProjectDetails(props) {
         const project = projectObj.projects[id]
 
         return (
-            <div>
-                <div className="container section project-details">
-                    <div className="card z-deph-0">
-                        <div className="card-content">
-                            <span className="card-title">{project.title}</span>
-                            <p>{project.content}</p>
-                        </div>
-                        <div className="card-action grey lighten-4 grey-text">
-                            <div>Posted By {project.authorFirstName.toUpperCase()} {project.authorLastName.toUpperCase()} </div>
-                            <div className="grey-text">{moment(project.createdAt.toDate()).calendar()}</div>
-                        </div>
-                        <div className="input-field">
+            <StyledProjectDetailsWrapper>
+                <StyledProjectDetailsContentWrapper>
+                    <StyledProjectDetailsSmallWrapper>
+                        <StyledProjectDetailsTitle>{project.title.toUpperCase()}</StyledProjectDetailsTitle>
+                        <p>{project.content}</p>
+                    </StyledProjectDetailsSmallWrapper>
+                    <StyledProjectDetailsFooterContainer >
+                        <StyledProjectDetailsFooterLeft >
                             <Link to={{
-                                pathname:`/edit/${id}`,
-                                state:{...project}
-
-                            }}>
-                            <button className="btn lighten-1 z-deph-0">Create</button>
+                                    pathname:`/edit/${id}`,
+                                    state:{...project}
+                                    }}>
+                            <StyledProjectDetailsFooterButton >edit</StyledProjectDetailsFooterButton>
                             </Link>
-                            <button className="btn lighten-1 z-deph-0" onClick={deletehandler}>Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                            <StyledProjectDetailsFooterButton onClick={deletehandler}>Delete</StyledProjectDetailsFooterButton>
+                            <StyledProjectDetailsFooterButton onClick={()=>props.history.push("/")}>Cancel</StyledProjectDetailsFooterButton>
+                        </StyledProjectDetailsFooterLeft>
+                        <StyledProjectDetailsFooterRight>
+                            <p>Posted By {project.authorFirstName.toUpperCase()} {project.authorLastName.toUpperCase()} </p>
+                            <p style={{color:"red"}}>{moment(project.createdAt.toDate()).calendar()}</p>
+                        </StyledProjectDetailsFooterRight>
+                    </StyledProjectDetailsFooterContainer>
+                </StyledProjectDetailsContentWrapper>
+            </StyledProjectDetailsWrapper>
         )
     } else {
         return (
-            <div className="container center">
+            <div >
                 <p>Loading bekle gardaş</p>
             </div>
         )

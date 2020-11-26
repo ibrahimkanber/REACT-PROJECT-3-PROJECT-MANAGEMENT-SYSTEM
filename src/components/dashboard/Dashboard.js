@@ -1,32 +1,44 @@
-import React,{useState} from 'react';
-import {useSelector} from "react-redux";
+import React from 'react';
+import { useSelector } from "react-redux";
 import ProjectList from '../projects/ProjectList';
 import Notifications from './Notifications';
-import {useFirestoreConnect} from "react-redux-firebase";
-import {Redirect} from "react-router-dom";
- 
-// console.log(useFirestoreConnect)
+import { useFirestoreConnect } from "react-redux-firebase";
+import { Redirect } from "react-router-dom";
+import Calendar from "react-calendar"
+import { StyledDashboardCardWrapper,StyledNotificationsWrapper,StyledDashboardRightSideCardWrapper } from './Dashboard.style';
+
 
 function Dashboard() {
-    
+
     useFirestoreConnect([
-        {collection:"projects",orderBy:["createdAt","desc"]}
+        { collection: "projects", orderBy: ["createdAt", "desc"] }
     ])
 
-    const {projects}=useSelector(state=>state.firestoreReducer.ordered)
-    const {auth} = useSelector(state => state.firebaseReducer)
-    if(!auth.uid) return(<Redirect to="/signIn"/>)
+    const { projects } = useSelector(state => state.firestoreReducer.ordered)
+    const { users } = useSelector(state => state.firestoreReducer.ordered)
+    const { auth } = useSelector(state => state.firebaseReducer)
+    if (!auth.uid) return (<Redirect to="/signIn" />)
+
+    /* console.log(auth)
+    console.log(users) */
+    const data = users?.filter(user=>user.id==auth.uid)
+ 
+    const userRole=data && data[0]?.role
+
+    const dinamicStyle={
+        display:userRole=="admin"? "block":"none"
+    }
+
     return (
-        <div className="dashboard container">
-            <div className="row">
-                <div className="col s12 m6">
-                    <ProjectList projects={projects}/>
-                </div>
-                <div className="col s12 m5 offset-m1">
-                    <Notifications/>
-                </div>
-            </div>
-        </div>
+        <StyledDashboardCardWrapper >
+            <ProjectList projects={projects} />
+            <StyledDashboardRightSideCardWrapper>
+                    <Calendar />
+                <StyledNotificationsWrapper style={dinamicStyle}>
+                <Notifications />
+                </StyledNotificationsWrapper>
+            </StyledDashboardRightSideCardWrapper>
+        </StyledDashboardCardWrapper>
     )
 }
 

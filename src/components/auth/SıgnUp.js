@@ -1,68 +1,47 @@
-import React,{useState} from 'react';
-import {useSelector ,useDispatch} from "react-redux";
-import {Redirect} from "react-router-dom";
-import {signUp} from "../../store/actions/authActions"
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { signUp } from "../../store/actions/authActions"
+import { CustomInput } from '../../tools/CustomInput';
+import { StyledAuthCardWrapper, StyledAuthForm,StyledAuthSubmitButton,StyledFlexCardColumn,StyledAuthHeader} from './Auth.style';
 function SignUp() {
-    const [firstName,setFirstName]=useState("");
-    const [lastName,setLastName]=useState("");
-    const [email,setEmail]=useState("");
-    const [password,setPassword]=useState("");
-
-    function handleChange(e){
-       switch(e.target.id){
-           case "firstName":
-                  setFirstName(e.target.value)
-                  break;
-           case "lastName":
-                  setLastName(e.target.value)
-                  break;
-           case "email":
-                  setEmail(e.target.value)
-                  break;
-           case "password":
-                  setPassword(e.target.value)
-                  break;
-        }
-    }
-
-/*     console.log(firstName,lastName,password,email) */
-    const dispatch=useDispatch()
+    const [values, setValues] = useState({
+        firstName: "",
+        lastName: "",
+        role:"",
+        email: "",
+        password: ""
+    })
     
-    function handleSubmit(e){
-        e.preventDefault();
-        dispatch(signUp(email,password,firstName,lastName))
+    function handleChange(e) {
+        setValues({ ...values, [e.target.id]: e.target.value })
 
     }
 
-    const {auth} = useSelector(state => state.firebaseReducer)
-    if(auth.uid) return(<Redirect to="/"/>)
-   
-    return (
-     <div className="container">
-         <form onSubmit={handleSubmit} className="white">
+    const dispatch = useDispatch()
 
-             <h5 className="grey-text text-darken-3">Sign Up</h5>
-             <div className="input-field">
-                 <label htmlFor="firstName">First Name</label>
-                 <input type="text" id="firstName" onChange={handleChange}/>
-             </div>
-             <div className="input-field">
-                 <label htmlFor="lastName">Last Name</label>
-                 <input type="text" id="lastName" onChange={handleChange}/>
-             </div>
-             <div className="input-field">
-                 <label htmlFor="email">Email</label>
-                 <input type="email" id="email" onChange={handleChange}/>
-             </div>
-             <div className="input-field">
-                 <label htmlFor="password">password</label>
-                 <input type="password" id="password" onChange={handleChange}/>
-             </div>
-             <div className="input-field">
-                 <button className="btn lighten-1 z-deph-0">Sing Up</button>
-             </div>
-         </form>
-     </div>
+    function handleSubmit(e) {
+        e.preventDefault();
+        dispatch(signUp(values))
+    }
+
+    const { auth } = useSelector(state => state.firebaseReducer)
+    if (auth.uid) return (<Redirect to="/" />)
+
+    return (
+        <StyledAuthCardWrapper>
+            <StyledAuthForm>
+                <StyledAuthHeader>Sign Up</StyledAuthHeader>
+                <CustomInput type="text" function={handleChange} name="First Name" id="firstName"/>
+                <CustomInput type="text" function={handleChange} name="Last Name" id="lastName"/>
+                <CustomInput type="text" function={handleChange} name="Role" id="role"/>
+                <CustomInput type="email" function={handleChange} name="E-Mail" id="email"/>
+                <CustomInput type="password" function={handleChange} name="Password" id="password"/>
+                <StyledFlexCardColumn>
+                <StyledAuthSubmitButton>Send</StyledAuthSubmitButton>
+                </StyledFlexCardColumn>
+            </StyledAuthForm>
+        </StyledAuthCardWrapper>
     )
 }
 

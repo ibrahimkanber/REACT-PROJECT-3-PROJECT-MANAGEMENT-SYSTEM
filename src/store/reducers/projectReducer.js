@@ -12,6 +12,7 @@ const projectReducer=(state=initialState.projects,action)=>{
         case "CREATE_PROJECT":
             console.log("created project",action.payload)
             return state;
+            
         case "CREATE_PROJECT_ERROR":
             console.log(action.err)
             return state;
@@ -24,8 +25,11 @@ const projectReducer=(state=initialState.projects,action)=>{
             return state
         case "DELETE_PROJECT":
                 console.log("deleted")
+                return state
+        default:
+            return state
     }
-    return state
+    
 }
 
 export default projectReducer;

@@ -3,39 +3,28 @@ import React, { useState } from 'react';
 import {createProject} from "../../store/actions/ProjectActions";
 import {useDispatch,useSelector} from "react-redux";
 import {Redirect} from "react-router-dom";
+import { StyledProjectTemplateForm, StyledProjectTemplateWrapper,StyledProjectTemplateTitle, StyledProjectTemplateFooterButton ,StyledProjectTemplateFlexColumn,StyledProjectTemplateTitleInput,StyledProjectTemplateContentInput,StyledProjectTemplateCancelButtonWrapper} from './styles/EditAndCreate.style';
+
 
 const CreateProject = (props) => {
-    /* console.log(props) */
+    const [project, setProject] = useState({
+        title:"",
+        content:""
+    })
     const  dispatch=useDispatch()
-    const [title, setTitle] = useState("");
-    const [content, setContent] = useState("");
-    const [project,setProject]=useState("")
-    
-    const data=useSelector(state=>state.firebaseReducer)
-    /* console.log(data) */
+
     const {auth:{uid}}=useSelector(state=>state.firebaseReducer)
     const {data:{users}}=useSelector(state=>state.firestoreReducer)
     const activeuser= users? users[uid]:null 
-   /*  console.log(activeuser) */
-
-
+ 
 
     function handleChange(e) {
-        switch (e.target.id) {
-            case "title":
-                setTitle(e.target.value)
-                break;
-            case "content":
-                setContent(e.target.value)
-                break;
-        }
-        setProject({title,content})
+        setProject({ ...project, [e.target.id]: e.target.value })
     }
 
     function handleSubmit(e) {
         e.preventDefault();
-        // console.log(e.target);
-        
+       
         dispatch(createProject(project,activeuser,uid))
          props.history.push("/")
         
@@ -46,25 +35,28 @@ const CreateProject = (props) => {
     if(!auth.uid) return(<Redirect to="/signIn"/>)
 
     return (
-        <div className="container">
+        <StyledProjectTemplateWrapper >
+        
+        <StyledProjectTemplateForm onSubmit={handleSubmit}>
 
-            <form onSubmit={handleSubmit}>
+            {/* <StyledProjectTemplateTitle>Edit your Project</StyledProjectTemplateTitle> */}
+            <StyledProjectTemplateFlexColumn>
+                <StyledProjectTemplateTitle htmlFor="title">Title</StyledProjectTemplateTitle>
+                <StyledProjectTemplateTitleInput type="text" id="title" onChange={handleChange}/>
+            </StyledProjectTemplateFlexColumn>
+            <div >
+                <StyledProjectTemplateTitle htmlFor="content">Project Content</StyledProjectTemplateTitle>
+                <StyledProjectTemplateContentInput name="content" id="content" onChange={handleChange} style={{}} ></StyledProjectTemplateContentInput>
+            </div>
+            <div >
+                <StyledProjectTemplateFooterButton>Create</StyledProjectTemplateFooterButton> 
+            </div>
+            <StyledProjectTemplateCancelButtonWrapper>
 
-
-                <h5 className="grey-text text-darken-3">Create New Project</h5>
-                <div className="input-field">
-                    <label htmlFor="title">Title</label>
-                    <input type="text" id="title" onChange={handleChange} />
-                </div>
-                <div className="input-field">
-                    <label htmlFor="content">Project Content</label>
-                    <textarea name="content" id="content" className="materialize-textarea" onChange={handleChange}></textarea>
-                </div>
-                <div className="input-field">
-                    <button className="btn lighten-1 z-deph-0">Create</button>
-                </div>
-            </form>
-        </div>
+            <StyledProjectTemplateFooterButton onClick={()=>props.history.push("/")}>Cancel</StyledProjectTemplateFooterButton>
+            </StyledProjectTemplateCancelButtonWrapper>
+        </StyledProjectTemplateForm>
+    </StyledProjectTemplateWrapper>
     )
 
 }

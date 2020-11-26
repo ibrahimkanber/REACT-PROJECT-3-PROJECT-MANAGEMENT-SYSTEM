@@ -19,14 +19,14 @@ export const createProject=(project,activeUser,uid)=>{
         
     }
 }
-export const editProject=(title,content,projectId)=>{
+export const editProject=(values,projectId)=>{
     return (dispatch,getState,{getFirebase,getFirestore})=>{
 
         const firestore=getFirestore()
         
         firestore.collection("projects").doc(projectId).update({
-            "title":title,
-            "content":content,
+            "title":values.title,
+            "content":values.content,
             "createdAt":new Date()
         }).then(()=>{
             dispatch({type:"EDIT_PROJECT"})

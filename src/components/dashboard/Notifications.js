@@ -1,10 +1,11 @@
 import React from 'react'
+import { StyledNotificationsCardWrapper } from './Notifications.style'
 
 const Notifications=()=> {
     return (
-        <div>
+        <StyledNotificationsCardWrapper>
             <p>Notifications</p>
-        </div>
+        </StyledNotificationsCardWrapper>
     )
 }
 

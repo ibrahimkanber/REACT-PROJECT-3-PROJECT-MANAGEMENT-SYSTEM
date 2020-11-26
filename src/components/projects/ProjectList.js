@@ -1,11 +1,12 @@
 import React from 'react';
 import ProjectSummary from './ProjectSummary';
 import {Link} from "react-router-dom";
+import { StyledProjectListWrapper } from './styles/Projectlist.style';
 
 const ProjectList = ({ projects }) => {
-    // console.log(projects)
+   
     return (
-        <div className="project-list section">
+        <StyledProjectListWrapper>
             {
                 projects && projects.map((project, index) => {
                     return (
@@ -15,7 +16,7 @@ const ProjectList = ({ projects }) => {
                     )
                 })
             }
-        </div>
+        </StyledProjectListWrapper>
     )
 }
 

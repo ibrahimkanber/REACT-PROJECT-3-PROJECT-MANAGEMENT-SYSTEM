@@ -1,8 +1,8 @@
-export const signIn=(email,password)=>{
+export const signIn=(values)=>{
     return (dispatch,getState,{getFirebase})=>{
         const firebase=getFirebase();
         firebase.auth().signInWithEmailAndPassword(
-            email,password
+            values.email,values.password
         ).then(()=>{
             dispatch({type:"LOGIN_SUCCESS"})
         }).catch(err=>{
@@ -22,7 +22,7 @@ export const signOut=()=>{
 }
 
 
-export const signUp=(email,password,firstName,lastName)=>{
+export const signUp=(values)=>{
     return (dispatch,getState,{getFirebase,getFirestore})=>{
         const firebase = getFirebase();
         const firestore = getFirestore();
@@ -30,13 +30,14 @@ export const signUp=(email,password,firstName,lastName)=>{
     
 
         firebase.auth().createUserWithEmailAndPassword(
-            email,password
+            values.email,values.password
             
         ).then(res=>{
             return firestore.collection("users").doc(res.user.uid).set({
-                firstName:firstName,
-                lastName:lastName,
-                initials:firstName[0]+lastName[0]
+                firstName:values.firstName,
+                lastName:values.lastName,
+                role:values.role,
+                initials:values.firstName[0]+values.lastName[0]
             })
         }).then(()=>{
             dispatch({type:"SIGNUP_SUCCESS"})

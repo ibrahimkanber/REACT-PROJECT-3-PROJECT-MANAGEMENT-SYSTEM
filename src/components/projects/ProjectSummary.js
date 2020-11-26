@@ -1,19 +1,25 @@
 import React from 'react';
 import moment from 'moment';
-
+import {useDispatch,useSelector} from "react-redux";
+import { StyledSummaryWrapper } from './styles/ProjectSummary.style';
 
 function ProjectSummary({ project }) {
-    /* console.log(moment(project.createdAt.toDate()).calendar()) */
-
+    const {auth:{uid}}=useSelector(state=>state.firebaseReducer)
+    const dinamicStyle={
+        backgroundColor: uid==project.authorId? "yellow":"white"
+    }
     return (
-        <div className="card z-depth-0 project-summary">
-            <div className="card-content grey-text text-darken-3">
-                <span className="card-title">{project.title}</span>
+        <StyledSummaryWrapper style={dinamicStyle}>
+
+            <p>{project.title}</p>
+            <div >
                 <p>Posted by {project.authorFirstName.toUpperCase()}</p>
-                <div className="grey-text">{moment(project.createdAt.toDate()).calendar() }</div>
+                <div >{moment(project.createdAt.toDate()).calendar()}</div>
             </div>
-        </div>
+
+        </StyledSummaryWrapper>
     )
 }
 
 export default ProjectSummary
+
