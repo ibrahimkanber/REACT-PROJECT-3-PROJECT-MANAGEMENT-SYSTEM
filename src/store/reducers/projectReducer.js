@@ -26,6 +26,12 @@ const projectReducer=(state=initialState.projects,action)=>{
         case "DELETE_PROJECT":
                 console.log("deleted")
                 return state
+        case "CREATE_NOTIFICATIONS":
+            console.log("added to notifications")
+            return state
+        case "DELETE_NOTIFICATION":
+            console.log("deleted")
+            return state
         default:
             return state
     }

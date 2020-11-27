@@ -7,11 +7,13 @@ export const StyledDashboardCardWrapper=styled.div`
             margin: 20px auto;
             display: flex;
             justify-content: space-between;
-            justify-self: center
+            justify-self: center;
+         
+            
 `  
 export const StyledNotificationsWrapper=styled.div`
         height:500px
 `  
 export const StyledDashboardRightSideCardWrapper=styled.div`
-        width: 40%        
+           
 `  

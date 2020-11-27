@@ -3,15 +3,19 @@ import ProjectSummary from './ProjectSummary';
 import {Link} from "react-router-dom";
 import { StyledProjectListWrapper } from './styles/Projectlist.style';
 
-const ProjectList = ({ projects }) => {
+const ProjectList = ({ projects,userRole }) => {
    
     return (
         <StyledProjectListWrapper>
             {
                 projects && projects.map((project, index) => {
                     return (
-                        <Link to={"/project/"+project.id} key={index}>
-                            <ProjectSummary  project={project} />
+                        <Link to={{
+                            pathname:"/project/"+project.id,
+                            state:userRole
+
+                        }} key={index} className="navLink1">
+                            <ProjectSummary  project={project} userRole={userRole} />
                         </Link>
                     )
                 })

@@ -47,6 +47,11 @@ body{
   text-decoration: none;
  
 } 
+.navLink1{
+  
+  text-decoration: none;
+ 
+} 
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

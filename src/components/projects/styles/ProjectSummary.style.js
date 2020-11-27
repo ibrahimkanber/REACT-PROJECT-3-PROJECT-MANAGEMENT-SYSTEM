@@ -12,6 +12,8 @@ align-items: center;
 border-radius: 5px;
 box-shadow: 10px 6px 10px #8a7369;
 text-align: "center";
-fontFamily: 'Goldman', cursive
+font-family: 'Goldman', cursive;
+text-decoration:none;
+background-color:white;
 `
 

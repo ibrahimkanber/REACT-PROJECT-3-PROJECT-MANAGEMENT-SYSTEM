@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StyledProjectListWrapper=styled.div`
         padding:10px;
         display:flex;
-        flexWrap:wrap;
+        flex-wrap:wrap;
         height:100%;
         min-height:250px;
         width:55%;

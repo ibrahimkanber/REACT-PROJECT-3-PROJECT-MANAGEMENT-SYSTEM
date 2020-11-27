@@ -36,7 +36,7 @@ export const editProject=(values,projectId)=>{
         
     }
 }
-export const deleteProject=(projectId)=>{
+export const deleteProject=(projectId,notificationId)=>{
     return (dispatch,getState,{getFirebase,getFirestore})=>{
 
         const firestore=getFirestore()
@@ -47,6 +47,35 @@ export const deleteProject=(projectId)=>{
             dispatch({type:"DELETE_PROJECT_ERROR",payload:err})
         })
         
+        if (notificationId){
+            
+            firestore.collection("notifications").doc(notificationId).delete().then(()=>{
+                dispatch({type:"DELETE_NOTIFICATION"})
+            }).catch((err)=>{
+                dispatch({type:"DELETE_NOTIFICATION",payload:err})
+            })
+        }
+
+
+
+      
+        
     }
 }
+export const sendDeleteRequest=(project,id)=>{
+    return (dispatch,getState,{getFirebase,getFirestore})=>{
 
+        const firestore=getFirestore()
+        
+        firestore.collection("notifications").add({
+            personalName:project.authorFirstName,
+            projectId:id,
+            sendedAt:new Date()
+        }).then(()=>{
+            dispatch({type:"CREATE_NOTIFICATIONS"})
+        }).catch((err)=>{
+            dispatch({type:"CREATE_NOTIFICATIONS",err})
+        })
+        
+    }
+}

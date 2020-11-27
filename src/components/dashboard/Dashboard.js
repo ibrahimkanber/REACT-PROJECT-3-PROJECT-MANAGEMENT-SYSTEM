@@ -6,13 +6,15 @@ import { useFirestoreConnect } from "react-redux-firebase";
 import { Redirect } from "react-router-dom";
 import Calendar from "react-calendar"
 import { StyledDashboardCardWrapper,StyledNotificationsWrapper,StyledDashboardRightSideCardWrapper } from './Dashboard.style';
-
+import 'react-calendar/dist/Calendar.css';
 
 function Dashboard() {
 
-    useFirestoreConnect([
-        { collection: "projects", orderBy: ["createdAt", "desc"] }
-    ])
+    useFirestoreConnect(
+        [
+            { collection: "users" }, { collection: "projects", orderBy: ["createdAt", "desc"] },{collection: "notifications"}
+        ]
+    )
 
     const { projects } = useSelector(state => state.firestoreReducer.ordered)
     const { users } = useSelector(state => state.firestoreReducer.ordered)
@@ -31,7 +33,7 @@ function Dashboard() {
 
     return (
         <StyledDashboardCardWrapper >
-            <ProjectList projects={projects} />
+            <ProjectList projects={projects} userRole={userRole} />
             <StyledDashboardRightSideCardWrapper>
                     <Calendar />
                 <StyledNotificationsWrapper style={dinamicStyle}>

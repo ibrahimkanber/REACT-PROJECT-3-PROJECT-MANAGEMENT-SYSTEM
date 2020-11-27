@@ -5,12 +5,14 @@ width:100%;
 min-height:80vh;
 display:flex;
 justify-content:center;
-align-items:center
+align-items:center;
+
 `  
 export const StyledFlexCardRow=styled.div`
 display:flex;
 justify-content:center;
-align-items:center
+align-items:center;
+
 `  
 export const StyledFlexCardColumn=styled.div`
 display:flex;
@@ -24,7 +26,7 @@ export const StyledAuthForm=styled.form`
 background-color:rgba(0,0,0,0.8);
 border-radius:10px;
 width:20%;
-min-width:200px;
+min-width:300px;
 height:fit-content;
 padding:30px;
 justify-content:center;

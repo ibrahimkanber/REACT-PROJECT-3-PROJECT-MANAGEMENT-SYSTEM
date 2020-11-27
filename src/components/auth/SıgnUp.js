@@ -30,7 +30,7 @@ function SignUp() {
 
     return (
         <StyledAuthCardWrapper>
-            <StyledAuthForm>
+            <StyledAuthForm onSubmit={handleSubmit}>
                 <StyledAuthHeader>Sign Up</StyledAuthHeader>
                 <CustomInput type="text" function={handleChange} name="First Name" id="firstName"/>
                 <CustomInput type="text" function={handleChange} name="Last Name" id="lastName"/>

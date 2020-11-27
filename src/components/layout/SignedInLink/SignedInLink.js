@@ -7,11 +7,7 @@ import { StyledNavbarLinksRight,StyledNavbarLinksRightLi} from "../SignedOutLink
 import { StyledNavbarLinksRightCircle } from "./SignInLink.style";
 
 const SignedInLink = () => {
-    useFirestoreConnect(
-        [
-            { collection: "users" }, { collection: "projects" }
-        ]
-    )
+  
 
 
     const { auth: { uid } } = useSelector(state => state.firebaseReducer)
