@@ -6,21 +6,21 @@
 
 # Scenario:
 
-*I tried to simulate the project management system in this project.
+* I tried to simulate the project management system in this project.
 
-*In this Project you can access the system with two roles:
+* In this Project you can access the system with two roles:
 
    **Project Manager**
   
    **Team Member**
 
-*If you are a team member,you can only access the projects given to you,  you can create or update the project and you can  send a **CLOSE REQUEST** at the end of the project
+* If you are a team member,you can only access the projects given to you,  you can create or update the project and you can  send a **CLOSE REQUEST** at the end of the project
 
-*If you are a manager, you can  access the all projects ,you can **DELETE** the project, update it and create a new project.
+* If you are a manager, you can  access the all projects ,you can **DELETE** the project, update it and create a new project.
 
 # Development Strategy:
 
-*In Development Phase i have used Firebase Services
+* In Development Phase i have used Firebase Services
 
   Firebase Auth--->For Authentication
   
