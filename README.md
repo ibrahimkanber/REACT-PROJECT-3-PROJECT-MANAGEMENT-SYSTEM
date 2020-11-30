@@ -12,7 +12,7 @@
 
    **Project Manager**
    
-   **or
+   ** or
   
    **Team Member**
 
