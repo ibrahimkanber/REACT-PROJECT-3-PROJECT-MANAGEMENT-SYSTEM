@@ -5,7 +5,7 @@
 ![ProjectManagement2](https://user-images.githubusercontent.com/65809527/100575860-43b48f80-32dd-11eb-8609-110eb549a9a3.gif)
 
 
---I tried to simulate the project management system in this project. If you are a team member,you can only access the projects given to you,  you can create or update the project and you can  send a CLOSE REQUEST at the end of the project.If you are a manager, you can DELETE the project, update it and create a new project.Also if you are manager you can track all project.
+--I tried to simulate the project management system in this project. If you are a team member,you can only access the projects given to you,  you can create or update the project and you can  send a CLOSE REQUEST at the end of the project.If you are a manager, you can DELETE the project, update it and create a new project.Also if you are manager you can access all projects.
 
 --In this Project i have used REACT,REDUX,REDUX-THUNK
 
