@@ -5,9 +5,31 @@
 ![ProjectManagement2](https://user-images.githubusercontent.com/65809527/100575860-43b48f80-32dd-11eb-8609-110eb549a9a3.gif)
 
 
---I tried to simulate the project management system in this project. If you are a team member,you can only access the projects given to you,  you can create or update the project and you can  send a CLOSE REQUEST at the end of the project.If you are a manager, you can DELETE the project, update it and create a new project.Also if you are manager you can access all projects.
 
---In this Project i have used REACT,REDUX,REDUX-THUNK
+*I tried to simulate the project management system in this project.
+
+*In this Project you can access the system with two roles:
+  # 1.Project Manager
+  # 2.Team Member
+
+# Scenario:
+
+*If you are a team member,you can only access the projects given to you,  you can create or update the project and you can  send a **CLOSE REQUEST** at the end of the project
+
+*If you are a manager, you can  access the all projects ,you can **DELETE** the project, update it and create a new project.
+
+# Development Strategy
+
+*In Development Phase i have used Firebase Services 
+  Firebase Auth--->For Authentication
+  FireStore ---->For CRUD operations
+  User Infos  is stored under "users" collection in firestore.
+  Project details are  stored under "projects" collection.
+  Notifications are stored under "notifications" collection.
+ 
+* For Global State Management i have used **REDUX** with enhancer **THUNK**
+ 
+* For Styling i have used **Styled Components**
 
 
 # .env File
