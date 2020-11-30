@@ -11,6 +11,8 @@
 * In this Project you can access the system with two roles:
 
    **Project Manager**
+   
+   **or
   
    **Team Member**
 
