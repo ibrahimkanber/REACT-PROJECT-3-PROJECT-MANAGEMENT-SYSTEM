@@ -10,6 +10,7 @@
 
 *In this Project you can access the system with two roles:
   **Project Manager**
+  
   **Team Member**
 
 # Scenario:
@@ -18,7 +19,7 @@
 
 *If you are a manager, you can  access the all projects ,you can **DELETE** the project, update it and create a new project.
 
-# Development Strategy
+# Development Strategy:
 
 *In Development Phase i have used Firebase Services 
   Firebase Auth--->For Authentication
