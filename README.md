@@ -1,9 +1,19 @@
 ![ProjectManagement2](https://user-images.githubusercontent.com/65809527/100575860-43b48f80-32dd-11eb-8609-110eb549a9a3.gif)
 
 
-I tried to simulate the project management system in this project. If you are a team member,you can only access the projects given to you,  you can create or update the project and you can  send a CLOSE REQUEST at the end of the project.If you are a manager, you can DELETE the project, update it and create a new project.Also if you are manager you can track all project.
+--I tried to simulate the project management system in this project. If you are a team member,you can only access the projects given to you,  you can create or update the project and you can  send a CLOSE REQUEST at the end of the project.If you are a manager, you can DELETE the project, update it and create a new project.Also if you are manager you can track all project.
 
-In this Project i have used REACT,REDUX,REDUX-THUNK
+--In this Project i have used REACT,REDUX,REDUX-THUNK
+
+
+# .env File
+REACT_APP_API_KEY=
+REACT_APP_AUTH_DOMAIN=
+REACT_APP_DATABASE_URL=
+REACT_APP_PROJECT_ID=
+REACT_APP_STORAGE_BUCKET=
+REACT_APP_MESSAGING_SENDER_ID=
+REACT_APP_APP_ID=
 
 # Getting Started with Create React App
 
