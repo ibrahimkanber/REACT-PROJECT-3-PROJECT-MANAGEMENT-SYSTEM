@@ -24,7 +24,7 @@
 
   Firebase Auth--->For Authentication
   
-  FireStore ---->For CRUD operations
+  Firestore ---->For CRUD operations
   
   User Infos  is stored under "users" collection in firestore.
   Project details are  stored under "projects" collection.
