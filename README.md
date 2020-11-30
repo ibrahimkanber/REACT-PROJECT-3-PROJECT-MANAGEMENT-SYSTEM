@@ -20,9 +20,12 @@
 
 # Development Strategy:
 
-*In Development Phase i have used Firebase Services 
+*In Development Phase i have used Firebase Services
+
   Firebase Auth--->For Authentication
+  
   FireStore ---->For CRUD operations
+  
   User Infos  is stored under "users" collection in firestore.
   Project details are  stored under "projects" collection.
   Notifications are stored under "notifications" collection.
