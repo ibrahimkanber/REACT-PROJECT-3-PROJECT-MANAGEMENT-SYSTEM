@@ -18,7 +18,7 @@
 
 * If you are a manager, you can  access the **all** projects ,you can **DELETE** the project, update it and create a new project.
 
-# Development Strategy:
+# Development Strategie:
 
 * In Development Phase i have used Firebase Services
 
