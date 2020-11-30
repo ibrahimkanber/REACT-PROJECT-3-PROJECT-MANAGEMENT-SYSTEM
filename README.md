@@ -14,9 +14,9 @@
   
    **Team Member**
 
-* If you are a team member,you can only access the projects given to you,  you can create or update the project and you can  send a **CLOSE REQUEST** at the end of the project
+* If you are a team member,you can **only** access the projects given to you,  you can create or update the project and you can  send a **CLOSE REQUEST** at the end of the project
 
-* If you are a manager, you can  access the all projects ,you can **DELETE** the project, update it and create a new project.
+* If you are a manager, you can  access the **all** projects ,you can **DELETE** the project, update it and create a new project.
 
 # Development Strategy:
 
