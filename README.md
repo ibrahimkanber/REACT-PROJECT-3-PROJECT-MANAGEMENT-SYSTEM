@@ -9,8 +9,8 @@
 *I tried to simulate the project management system in this project.
 
 *In this Project you can access the system with two roles:
-  # 1.Project Manager
-  # 2.Team Member
+  **Project Manager**
+  **Team Member**
 
 # Scenario:
 
