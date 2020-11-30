@@ -4,7 +4,7 @@
 
 ![ProjectManagement2](https://user-images.githubusercontent.com/65809527/100575860-43b48f80-32dd-11eb-8609-110eb549a9a3.gif)
 
-
+# Scenario:
 
 *I tried to simulate the project management system in this project.
 
@@ -13,8 +13,6 @@
    **Project Manager**
   
    **Team Member**
-
-# Scenario:
 
 *If you are a team member,you can only access the projects given to you,  you can create or update the project and you can  send a **CLOSE REQUEST** at the end of the project
 
